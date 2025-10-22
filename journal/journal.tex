@@ -1,0 +1,191 @@
+% --- LaTeX CV Template - S. Venkatraman ---
+
+% Set document class and font size
+\documentclass[10pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{paperwidth=7.25in, paperheight=10.25in}
+
+% Package imports
+\usepackage{setspace, longtable, graphicx, hyphenat, hyperref, fancyhdr, ifthen, everypage, enumitem, amsmath, setspace}
+
+% --- Page layout settings ---
+
+% Set page margins
+%\usepackage[left=1in, right=1in, bottom=0.7in, top=0.7in]{geometry}
+
+% Set line spacing
+\renewcommand{\baselinestretch}{1.15}
+
+% --- Page formatting ---
+
+% Set link colors
+\usepackage[dvipsnames]{xcolor}
+\hypersetup{colorlinks=true, linkcolor=RoyalBlue, urlcolor=RoyalBlue}
+
+% Set font to Libertine, including math support
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+
+% Remove page numbering
+%\pagenumbering{gobble}
+\usepackage{fancyhdr} 
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{\thepage}
+\pagestyle{fancy} 
+
+\newcounter{carrcntr}
+
+% --- Document starts here ---
+
+\begin{document}
+
+\newcounter{dt}
+
+\newcommand{\dat}[1]{
+\nohyphens{\color{OliveGreen}{\setcounter{dt}{#1} \texttt{{\footnotesize \thedt}}}}
+%\nohyphens{\color{OliveGreen}{[#1]}}
+& 
+ \\
+}
+
+\newcommand*{\carr}[1]{
+\stepcounter{carrcntr}%
+\nohyphens{\color{OliveGreen}{\hfill{\arabic{carrcntr}.}}}
+& #1
+ \\
+}
+
+% Name and date of last update to this document
+\noindent{\,\Huge{\textsf{Yann Ics}
+\hfill{\it\footnotesize Last endpoint -- \today}}}
+
+\vspace{3mm}
+{\color{orange} \LARGE \textsc{Journal}}
+
+% --- Contact information and other items ---
+
+%\vspace{0.5cm} 
+%\begin{center}
+%\begin{tabular}{lll}
+%% Line 1: Email, GitHub, office location
+%\textbf{Email}: by.cmsc@gmail.com      &
+%\hspace{0.55in} \textbf{GitHub}: github.com/yannics  \\
+%
+%% Line 2: Phone number, LinkedIn, citizenship
+%\textbf{Phone}: +33 (0)6 41 25 69 75   & 
+%\hspace{0.55in} \textbf{LinkedIn}: linkedin.com/in/yann-ics-713965115  
+%\end{tabular}
+%\end{center}
+
+% --- Start the two-column table storing the main content ---
+
+% Set spacing between columns
+\setlength{\tabcolsep}{2pt}
+
+% Set the width of each column
+\begin{longtable}{p{0.3in}p{4.7in}}
+
+\dat{250727}
+%\dat{27/07/25}
+\carr{
+Loin de moi cette idée de ne pas avoir vécu pour le plaisir d’un hypothétique lecteur -- ou lectrice -- à propos de ce qui va se jouer ici, et qui, dans l’immensité de l’insignifiance humaine, pourrait en donner ne serait-ce que l’impression que la vie ait un sens.
+}
+\carr{
+Le sens est bien entendu dans l’instant, et se projetait au delà est déjà le début d’un conte; qui au regard de la mémoire de ce que l’on a vécu s’embrume dans les actes manqués pour les uns, et révéle la félicité d’une promesse auto-réalisatrice pour les autres.
+}
+\dat{250728}
+%\dat{28/07/25}
+\carr{
+Quoiqu'il en soit, je rêve des états de conscience autre lorsque je me confontre à l'incompréhension du dessein mercantile dans lequel je me suis engluer, faute de ne pouvoir reprogrammer mon cerveau à jamais corrompu. 
+}
+\carr{
+Fuire. La fuite est devenue ma raison d'être. Je ne puis rester là, ou même ailleurs.
+}
+\dat{250729}
+%\dat{29/07/25}
+\carr{
+Fuire. Toujours être ailleurs. Bien qu'il y ait de ces instants \textit{hic et nunc} sans temps. Une éternité coincée dans les limbes du temps.
+}
+\carr{
+Bref, me voilà le personnage principal de ce conte, dont la maïeutique s'inscrit dans un contexte où la folie ordinaire règne en maître. 
+}
+%\carr{
+%... \textit{à la recherche d'une méthodologie heuristique en musique} ... à propos de la connaissance de notre environnement immédiat: entre l'inné et l'acquis. Rien à voir directement avec ce qui précéde, mais cela devrait constituer une base de reflexion faisant suite à mon essai ... \textit{à la recherche d'un nouveau paradigme de musique vivante}. Ce sera ma parenthèse épisodique, ma ritournelle, point d'ancrage nous reliant à la musique, car c'est un des points pour ne pas dire le point émergent de notre conscience.}
+\dat{250810}
+%\dat{10/08/25}
+\carr{
+Déconstruire. Apprendre. Comprendre. 
+}
+\dat{251002}
+%\dat{02/10/25}
+\carr{
+Apprendre. Comprendre. Déconstruire.
+}
+\carr{
+Comprendre. Déconstruire. Apprendre. 
+}
+\carr{
+ \textit{Should I stay or should I go ...} De toute façon, je dois être prêt à partir. Je sais que je ne suis pas d'ici. Qu'importe ma destination (\textit{there is no future}), ma vie est le chemin. \textit{Mais les braves gens n'aiment pas que l'on suive une autre route qu'eux.} De ce chemin chaotique, parmi un rhyzome d'autres chemins, je suis la route qui me paraît la plus raisonnable, la plus confortable, la plus intéressante. Mais il arrive parfois que je me plante. Les choix cornéliens se multiplient. Quoi qu'il arrive, le moment du choix viendra et je le ferai, fatalement. }
+
+\dat{251004}
+%\dat{04/10/25}
+\carr{
+Mais le vent tourne. Ou plus précisément change selon la saison. Dehors, un grand frais, limite un coup de vent. Plein ouest. Pris au piège, me voilà pris à parti dans une confrontation avec mon destin. Décidément, ces nuits sauvages me rappellent l’insignifiance de mon être, et ma résolution résiliente. 
+}
+
+\dat{251007}
+%\dat{07/10/25}
+\carr{
+Et le vent tourne et se fige. Une nuit de pleine lune, claire, calme, esquisse un nouvel horizon. Je dois jouer avec le temps. Rester serein, pas à pas, tout est possible. Le cap permet la route et multiplie les chances d'arriver là où l'ailleurs sera notre ritournelle.
+}
+
+\dat{251021}
+%\dat{21/10/25}
+\carr{
+Après avoir traversé la baie de Saint-Brieuc dimanche dernier avec une bonne brise et des rafales de 20 à 30 nœuds plein sud, ce qui m'a pris environ 5 heures avec la voile d'avant format tourmentin (ayant un génois sur enrouleur), avec des creux annoncés d'environ un mètre (mais qui en paraissait le double), je dois dire que je n'ai pas lâché la barre. Le pilote automatique partait aux fraises systématiquement. Je me suis donc retrouvé à Paimpol, non sans surprise, car c'était précisément l'escale que j'avais planifiée. Bref, je disais après avoir… et même pendant, la nature s'est révélée, bien plus puissante et présente durant les pics critiques et les accalmies, aux couleurs et aux reflets insoupçonnés, indescriptible, bien que ce soit exactement l'objet de l'écrivant… de décrire.
+}
+\carr{
+Le bleu du ciel fendait les nuages gris, un bleu comme je n'en ai encore jamais vu, ou devrais-je dire encore jamais ressenti. Un arc-en-ciel droit, qui a oublié d'être un arc, se dressait entre les îlots qui imposaient leurs silhouettes, comme des arbres minéraux que l'on ne peut toucher. 
+}
+\carr{
+La nature a la faculté de nous surprendre là où nous prenons le temps de la contempler, pour nous rappeler à notre propre existence, non comme individu, mais comme une interaction, une invitation à être, sans que l'on sache vraiment pourquoi. 
+%C'est beau et puissant à la fois.
+}
+
+
+%\dat{251008}
+%%\dat{08/10/25}
+%\carr{
+%J'ai rêvé que je rêvais. Une sensation équivoque pour un contenu perturbant. Inutile d'épiloguer, cela m'arrive peut être ou plutôt trop souvent pour y être évoqué. 
+%}
+
+% --- Section: Education ---
+
+%\color{OliveGreen}{Education} 
+%& \textbf{University 1} \hfill City, State \\ 
+%& PhD in Subject \hfill Month Year -- Present \\
+%& Mentors: Professors A, B. {\it GPA: X.YZ.}\\
+%& \\
+%
+%& \textbf{University 2} \hfill City, State \\
+%& MA in Subject \hfill Month Year -- Month Year\\
+%& Mentors: Professors C, D. {\it GPA: X.YZ.}\\
+%& \\
+%
+%& \textbf{University 3} \hfill City, State\\
+%& BA in Subject 1, minor in Subject 2 \hfill Month Year -- Month Year \\
+%& Mentors: Professors E, F. {\it GPA: X.YZ.}\\
+%& \\
+
+% --- Uncomment the next few lines if you want to include some courses ---
+%& \textbf{Selected coursework}
+%\begin{itemize}[noitemsep,leftmargin=*]
+%\item \underline{Relevant subject 1}: Course 1, Course 2, Course 3, Course 4
+%\item \underline{Relevant subject 2}: Course 1, Course 2, Course 3, Course 4
+%\end{itemize} \\
+
+\end{longtable}
+\end{document}
+
