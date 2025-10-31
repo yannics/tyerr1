@@ -81,11 +81,13 @@ SynthDef("wFlute", { arg out=0, pch = 72, ibreath = 0.09, ifeedbk1 = 0.4, ifeedb
 ~chordList = (Array.series(~myScale.size)!~instrumentarium.size).allTuples.select{|it| it.asSet.size == ~instrumentarium.size}.collect(_.asSortedList).asSet.collect(_.asArray);
 
 ~previousChord = ~currentChord;
+
+~nOut = Server.default.options.numOutputBusChannels; // allows stereo output...
 )
 
 //++++++++++++++++++++++++++++++++++++++++++++++
 
-~fl1 = Synth(\wFlute, [out: 0]); ~fl2 = Synth(\wFlute, [out: 1]); ~fl3 = Synth(\wFlute, [out: 2]); ~fl4 = Synth(\wFlute, [out: 3]); Pbind(\type, \set, \x, Pfunc({~tmp = ~chordList.choose.postln; ~previousChord.postln; ~currentChord = ~assignDeg2Inst.(~toMidiChord.(~instrumentarium, ~tmp, ~myScale, ~root, ~previousChord), ~tmp).postln; ~previousChord = ~currentChord; "----------".postln; ~fl1.set("pch", ~currentChord[0], "ibreath", 0.00536, "amp", 0.01, "gate", 1); ~fl2.set("pch", ~currentChord[1], "ibreath", 0.00536, "amp", 0.01, "gate", 1); ~fl3.set("pch", ~currentChord[2], "ibreath", 0.00536, "amp", 0.01, "gate", 1); ~fl4.set("pch", ~currentChord[3], "ibreath", 0.00536, "amp", 0.01, "gate", 1)}), \dur, Prand([ 1, 0.5, 1/3, 2/3, 0.25, 1/5, 2/5, 0.75, 3/5, 4/5 ] * 2, inf)).play;
+~fl1 = Synth(\wFlute, [out: 0]); ~fl2 = Synth(\wFlute, [out: 1]); ~fl3 = Synth(\wFlute, [out: 2%~nOut]); ~fl4 = Synth(\wFlute, [out: 3%~nOut]); Pbind(\type, \set, \x, Pfunc({~tmp = ~chordList.choose.postln; ~previousChord.postln; ~currentChord = ~assignDeg2Inst.(~toMidiChord.(~instrumentarium, ~tmp, ~myScale, ~root, ~previousChord), ~tmp).postln; ~previousChord = ~currentChord; "----------".postln; ~fl1.set("pch", ~currentChord[0], "ibreath", 0.00536, "amp", 0.01, "gate", 1); ~fl2.set("pch", ~currentChord[1], "ibreath", 0.00536, "amp", 0.01, "gate", 1); ~fl3.set("pch", ~currentChord[2], "ibreath", 0.00536, "amp", 0.01, "gate", 1); ~fl4.set("pch", ~currentChord[3], "ibreath", 0.00536, "amp", 0.01, "gate", 1)}), \dur, Prand([ 1, 0.5, 1/3, 2/3, 0.25, 1/5, 2/5, 0.75, 3/5, 4/5 ] * 2, inf)).play;
 
 //++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++
