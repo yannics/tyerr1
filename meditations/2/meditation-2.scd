@@ -1,4 +1,5 @@
 // quadraphonic meditation...
+// Yann Ics -- Copyleft October 2025
 (
 SynthDef("wFlute", { arg out=0, pch = 72, ibreath = 0.09, ifeedbk1 = 0.4, ifeedbk2 = 0.4, gate = 1, amp = 0, lag = 0.5;
 	var kenv1, sr, cr, block;
