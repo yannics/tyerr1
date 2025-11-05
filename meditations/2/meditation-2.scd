@@ -64,33 +64,42 @@ SynthDef("wFlute", { arg out=0, pch = 72, ibreath = 0.09, ifeedbk1 = 0.4, ifeedb
 ~assignDeg2Inst = {
 	|toMidiChord, chordDeg|
 	var tmp = (chordDeg!chordDeg.size).allTuples.select{|it|it.size==it.asSet.size}.collect{|chord| chord.collect{|deg, i| toMidiChord.flatten(1).select{|mc| mc[mc.size-2..]==[i,deg]}.flatten(1)}};
+	// alternative with duplicate
+	//var tmp = (chordDeg!chordDeg.size).allTuples.collect{|chord| chord.collect{|deg, i| toMidiChord.flatten(1).select{|mc| mc[mc.size-2..][0]==[i,deg][0]}}}.flatten(1);
 	tmp=tmp.select{|set| set.every{|ar| ar.isEmpty.not}};
 	tmp[tmp.collect{|set| set.sum(_[0])}.minIndex].collect(_[1])
 	};
 
+~asTie = {
+	|previous,current|
+	var cur=current;
+	var res=nil!previous.size;
+	var tmp=previous.collect{|n,i| if (cur.includes(n)) {res.put(i,n);cur=cur.replace([n],nil)}};
+	cur=cur.reverse;
+	previous.size.collect{|i| if (res[i].isNil) {res.put(i, current[i].nearestInList(cur.sort)); cur.removeAt(cur.indexOf(res[i]))}};
+	res
+};
+
 //++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++
 
-~instrumentarium = Interval(50, 88, 0.5)!4; // intervals to adjust...
+~instrumentarium = Interval(50, 72, 0.5)!4; // intervals to adjust...
 
 ~root = 2; // as D
-~currentChord = [ 86, 74, 62, 50 ]; // arbitrary chord to init the process
+~previousChord = [ 86, 74, 62, 50 ]; // arbitrary chord to init the process
 
 ~myScale = Scale.new(#[0, 2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 16, 18, 20], 24, name: "noname");
 
 ~chordList = (Array.series(~myScale.size)!~instrumentarium.size).allTuples.select{|it| it.asSet.size == ~instrumentarium.size}.collect(_.asSortedList).asSet.collect(_.asArray);
-
-~previousChord = ~currentChord;
 
 ~nOut = Server.default.options.numOutputBusChannels; // allows stereo output...
 )
 
 //++++++++++++++++++++++++++++++++++++++++++++++
 
-~fl1 = Synth(\wFlute, [out: 0]); ~fl2 = Synth(\wFlute, [out: 1]); ~fl3 = Synth(\wFlute, [out: 2%~nOut]); ~fl4 = Synth(\wFlute, [out: 3%~nOut]); Pbind(\type, \set, \x, Pfunc({~tmp = ~chordList.choose.postln; ~previousChord.postln; ~currentChord = ~assignDeg2Inst.(~toMidiChord.(~instrumentarium, ~tmp, ~myScale, ~root, ~previousChord), ~tmp).postln; ~previousChord = ~currentChord; "----------".postln; ~fl1.set("pch", ~currentChord[0], "ibreath", 0.00536, "amp", 0.01, "gate", 1); ~fl2.set("pch", ~currentChord[1], "ibreath", 0.00536, "amp", 0.01, "gate", 1); ~fl3.set("pch", ~currentChord[2], "ibreath", 0.00536, "amp", 0.01, "gate", 1); ~fl4.set("pch", ~currentChord[3], "ibreath", 0.00536, "amp", 0.01, "gate", 1)}), \dur, Prand([ 1, 0.5, 1/3, 2/3, 0.25, 1/5, 2/5, 0.75, 3/5, 4/5 ] * 2, inf)).play;
+~fl1 = Synth(\wFlute, [out: 0]); ~fl2 = Synth(\wFlute, [out: 1]); ~fl3 = Synth(\wFlute, [out: 2%~nOut]); ~fl4 = Synth(\wFlute, [out: 3%~nOut]); Pbind(\type, \set, \x, Pfunc({~tmp = ~chordList.choose.postln; ~previousChord.postln; ~currentChord = ~asTie.(~previousChord, ~assignDeg2Inst.(~toMidiChord.(~instrumentarium, ~tmp, ~myScale, ~root, ~previousChord), ~tmp).postln); ~previousChord = ~currentChord.postln; "----------".postln; ~fl1.set("pch", ~currentChord[0], "ibreath", 0.00536, "amp", 0.01, "gate", 1); ~fl2.set("pch", ~currentChord[1], "ibreath", 0.00536, "amp", 0.01, "gate", 1); ~fl3.set("pch", ~currentChord[2], "ibreath", 0.00536, "amp", 0.01, "gate", 1); ~fl4.set("pch", ~currentChord[3], "ibreath", 0.00536, "amp", 0.01, "gate", 1)}), \dur, Pwrand([ 0.2, 0.25, 1/3, 0.4, 0.5, 0.6, 2/3, 0.75, 0.8, 1 ] * 2, Array.series(10,1).normalizeSum, inf)).play;
 
 //++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++
-
