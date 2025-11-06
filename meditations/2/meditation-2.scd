@@ -1,5 +1,6 @@
 // quadraphonic meditation...
 // Yann Ics -- Copyleft October 2025
+// Random Walk -- chord with no repeated degrees
 (
 SynthDef("wFlute", { arg out=0, pch = 72, ibreath = 0.09, ifeedbk1 = 0.4, ifeedbk2 = 0.4, gate = 1, amp = 0, lag = 0.5;
 	var kenv1, sr, cr, block;
@@ -11,7 +12,7 @@ SynthDef("wFlute", { arg out=0, pch = 72, ibreath = 0.09, ifeedbk1 = 0.4, ifeedb
 	block = cr.reciprocal;
 	ifqc = pch.midicps;
 	// noise
-	kenv1 = PinkNoise.ar(0.3,1);
+	kenv1 = PinkNoise.ar(0.23, 1);
 	aflow1 = LFClipNoise.ar( sr, kenv1 );
 	asum1 = ( ibreath * aflow1 ) + kenv1 ;
 	afqc = ifqc.reciprocal - ( asum1/20000 ) - ( 9/sr ) + ( ifqc/12000000 ) - block;
@@ -64,8 +65,6 @@ SynthDef("wFlute", { arg out=0, pch = 72, ibreath = 0.09, ifeedbk1 = 0.4, ifeedb
 ~assignDeg2Inst = {
 	|toMidiChord, chordDeg|
 	var tmp = (chordDeg!chordDeg.size).allTuples.select{|it|it.size==it.asSet.size}.collect{|chord| chord.collect{|deg, i| toMidiChord.flatten(1).select{|mc| mc[mc.size-2..]==[i,deg]}.flatten(1)}};
-	// alternative with duplicate
-	//var tmp = (chordDeg!chordDeg.size).allTuples.collect{|chord| chord.collect{|deg, i| toMidiChord.flatten(1).select{|mc| mc[mc.size-2..][0]==[i,deg][0]}}}.flatten(1);
 	tmp=tmp.select{|set| set.every{|ar| ar.isEmpty.not}};
 	tmp[tmp.collect{|set| set.sum(_[0])}.minIndex].collect(_[1])
 	};
@@ -87,13 +86,14 @@ SynthDef("wFlute", { arg out=0, pch = 72, ibreath = 0.09, ifeedbk1 = 0.4, ifeedb
 ~instrumentarium = Interval(50, 72, 0.5)!4; // intervals to adjust...
 
 ~root = 2; // as D
-~previousChord = [ 86, 74, 62, 50 ]; // arbitrary chord to init the process
+~previousChord = ~instrumentarium.collect{|inst|inst.asArray.choose}; // arbitrary chord to init the process
 
 ~myScale = Scale.new(#[0, 2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 16, 18, 20], 24, name: "noname");
 
 ~chordList = (Array.series(~myScale.size)!~instrumentarium.size).allTuples.select{|it| it.asSet.size == ~instrumentarium.size}.collect(_.asSortedList).asSet.collect(_.asArray);
 
 ~nOut = Server.default.options.numOutputBusChannels; // allows stereo output...
+"ready to play..."
 )
 
 //++++++++++++++++++++++++++++++++++++++++++++++
