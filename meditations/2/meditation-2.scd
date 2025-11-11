@@ -1,6 +1,6 @@
 (
 // Quadraphonic Meditation 2 -- Random Walk [ part of Meditations ]
-// Yann Ics -- Copyleft 2025
+// Yann Ics -- Copyleft November 2025
 Server.killAll;
 s = Server.default;
 s.options.numOutputBusChannels = 8;
@@ -52,8 +52,9 @@ s.waitForBoot({
 	/* source plugin: https://valhalladsp.com/shop/reverb/valhalla-supermassive/ */
 	~mainOutA = VSTPluginController(Synth(\vst_plugin2, [\busIn, 4, \busOut, 0], addAction: 'addToTail'));
 	~mainOutA.open("ValhallaSupermassive", editor:true, verbose:true, action: { |x, ok| ok.if { x.loadPreset("hac") }});
-	~mainOutB = VSTPluginController(Synth(\vst_plugin2, [\busIn, 6, \busOut, 2], addAction: 'addToTail')); // for stereo output set busOut to 0
+	~mainOutB = VSTPluginController(Synth(\vst_plugin2, [\busIn, 6, \busOut, 2], addAction: 'addToTail'));
 	~mainOutB.open("ValhallaSupermassive", editor:true, verbose:true, action: { |x, ok| ok.if { x.loadPreset("hac") }});
+	//~mainOutB.synth.set(\busOut, 0); // as stereo output
 	//~mainOutA.editor;
 	//~mainOutA.savePreset("hac");
 	//~mainOutA.info.presetFolder;
@@ -122,7 +123,7 @@ s.waitForBoot({
 	/* VARIABLES */
 	~instrumentarium = Interval(50, 74, 0.5)!4; // intervals to adjust...
 	~root = 2; // as D
-	~previousChord = ~instrumentarium.collect{|inst| inst.asArray.choose}; // arbitrary chord to init the process
+	~previousChord = ~instrumentarium.collect{|inst| inst.asArray.choose}; // any arbitrary chord to init the process
 	~myScale = Scale.new(#[0, 2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 16, 18, 20], 24);
 	// avec repetition
 	~chordList = (Array.series(~myScale.size)!~instrumentarium.size).allTuples;
@@ -151,4 +152,4 @@ s.waitForBoot({
 		\dur, Pwrand([ 0.2, 0.25, 1/3, 0.4, 0.5, 0.6, 2/3, 0.75, 0.8, 1 ] * 4, Array.series(10, 1).normalizeSum, inf)).play;
 })
 )
-
+//~main.stop; ~fl.do(_.free); ~mainOutA.synth.free; ~mainOutB.synth.free;
