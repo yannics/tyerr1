@@ -152,4 +152,8 @@ s.waitForBoot({
 		\dur, Pwrand([ 0.2, 0.25, 1/3, 0.4, 0.5, 0.6, 2/3, 0.75, 0.8, 1 ] * 4, Array.series(10, 1).normalizeSum, inf)).play;
 })
 )
+
+//~main.pause;
+//4.do{ |i| ~fl[i].set("gate", 0) };
+//~main.resume;
 //~main.stop; ~fl.do(_.free); ~mainOutA.synth.free; ~mainOutB.synth.free;
