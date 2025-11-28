@@ -104,7 +104,7 @@ violon =  \relative f'' {
 
 PartPOneVoiceOneLyricsOne =  \lyricmode {
   \set ignoreMelismata = ##t
-  i --\skip1 \skip1 "ɛ" --\skip1 "ɛ’" --\skip1 "tɛr" ki -- ri -- e e -- le -- i -- son\skip1 "‘dɔ" -- mi -- "nɛ" \skip1 luks "pɛr" "’pɛ" tu "ɑ" "‘lut" "ʃɛ" "ɑt" "‘ɛ" is ki -- ri -- e e -- le -- i -- son ki -- ri -- e\skip1
+  i --\skip1 \skip1 "ɛ" --\skip1 "" --\skip1 "tɛr" ki -- ri -- e e -- le -- i -- son\skip1 "‘dɔ" -- mi -- "nɛ" \skip1 luks "pɛr" "’pɛ" tu "ɑ" "‘lut" "ʃɛ" "ɑt" "‘ɛ" is ki -- ri -- e e -- le -- i -- son ki -- ri -- e\skip1
 }
 
 PartPOneVoiceOneLyricsTwo =  \lyricmode {
@@ -203,7 +203,7 @@ altotwo =  \relative f {
 
 PartPThreeVoiceOneLyricsOne =  \lyricmode {
   \set ignoreMelismata = ##t
-  "ɛ" -- i\skip1 \skip1 \skip1 "ɛ" \skip1 "ɛ’" -- t\vowelTransition "ɛr" \skip1 \skip1 "nɑm" "‘dɔ" "nɑ" "‘ɛ" e -- le -- i -- son e -- le -- i -- son "ɛt" "ɛt" "ɛt" kri -- ste e -- le -- i -- son e -- le -- i -- son
+  "ɛ" -- i\skip1 \skip1 \skip1 "ɛ" \skip1 "-"  t\vowelTransition "ɛr" \skip1 \skip1 "nɑm" "‘dɔ" "nɑ" "‘ɛ" e -- le -- i -- son e -- le -- i -- son "ɛt" "ɛt" "ɛt" kri -- ste e -- le -- i -- son e -- le -- i -- son
 }
 
 cello =  \relative f, {
