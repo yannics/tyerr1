@@ -124,6 +124,7 @@ s.waitForBoot({
 	~instrumentarium = Interval(50, 74, 0.5)!4; // intervals to adjust...
 	~root = 2; // as D
 	~previousChord = ~instrumentarium.collect{|inst| inst.asArray.choose}; // any arbitrary chord to init the process
+	//~previousChord = [ 50, 62, 74, 52, 64 ].scramble.butlast; // transition with previous meditation
 	~myScale = Scale.new(#[0, 2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 16, 18, 20], 24);
 	// avec repetition
 	~chordList = (Array.series(~myScale.size)!~instrumentarium.size).allTuples;
@@ -156,4 +157,4 @@ s.waitForBoot({
 //~main.pause;
 //4.do{ |i| ~fl[i].set("gate", 0) };
 //~main.resume;
-//~main.stop; ~fl.do(_.free); ~mainOutA.synth.free; ~mainOutB.synth.free;
+//~main.stop; ~fl.do(_.free); ~mainOutA.synth.free; ~mainOutB.synth.free; s.quit;
