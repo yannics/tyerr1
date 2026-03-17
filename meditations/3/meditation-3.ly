@@ -1253,7 +1253,7 @@ PartPOneVoiceOne =  \relative d'' {
   \stemDown bes2 r2 | % 16
   R1 | % 17
   bes,1 ~ \upbow _\ppp\<  | % 18
-  \stemUp bes2   _\f r2 | % 19
+  \stemUp bes2   _\f\> aes2_\mp | % 19
   R1 | % 20
   bes''1 ~ _\p\<  | % 21
   \stemDown bes2\! r2   | % 22
@@ -1382,7 +1382,7 @@ PartPFiveVoiceOne =  \relative es' {
   bes1  | % 22
   bes'1 | % 23
   \stemDown as2.. \stemDown f8 | % 24
-  \stemDown g2.. \stemDown es8 | % 25
+  \stemDown g2. \stemDown es4 | % 25
   \stemDown f2 \stemDown bes,2 | % 26
   as1 | % 27
   \stemDown c2 \stemDown es2 | % 28
@@ -1430,8 +1430,8 @@ PartPFiveVoiceOne =  \relative es' {
   \grace {  \small \stemUp es'32 } \stemDown c4 \grace {  \small \stemUp as'32 } \stemDown g8 [ \grace {  \small \stemUp f32 } \stemDown es8 \grace {  \small \stemUp f32 } \stemDown d8 \grace {  \small \stemUp es32 } \stemDown c8 ] 
   \time 2/4
   \grace {  \small \stemUp d32 } \stemUp as4 \stemDown bes4 | % 48
-  \time 4/4  \stemDown bes'4 \stemDown as8.. [ \stemDown f32 ] \stemDown g8.. [ \stemDown es32 ] \stemDown f8 [ \stemDown bes,8 ] | % 49
-  \stemUp as4 \stemDown c8 [ \stemDown es8 ] \grace {  \small \stemUp f32 } \stemDown d8 \stemDown bes4.\fermata | % 50
+  \time 4/4  \stemDown bes'4 \stemDown as8.. [ \stemDown f32 ] \stemDown g8. [ \stemDown es16 ] \stemDown f8 [ \stemDown bes,8 ] | % 49
+  \stemUp as4 \stemDown c8 [ \stemDown es8 ] \grace {  \small \stemUp f32 } \stemDown d4 \stemDown bes4 \fermata | % 50
   s1-\markup{\translate #'(5.5 . 1.5) \arrow #"open" ##f #Y #UP #3 #0.14 ""}-\markup { \italic{Arrêt bourdons}} | % 51 
   R1 \bar "|."
 }
