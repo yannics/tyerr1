@@ -1236,7 +1236,7 @@
 
 PartPOneVoiceOne =  \relative d'' {
   \clef "treble"
-  \time 4/4
+  \time 2/2
   \key c \major | % 1
   \tempo "Lento" 2 = 56
   \override Score.MetronomeMark.padding = #2
@@ -1265,7 +1265,7 @@ PartPOneVoiceOne =  \relative d'' {
 				  
 PartPTwoVoiceOne =  \relative e {
   \clef "alto"
-  \time 4/4
+  \time 2/2
   \key c \major | % 1
   r2. \stemUp e8 -. -> _\mp r8 | % 2
   R1 | % 3
@@ -1299,7 +1299,7 @@ PartPTwoVoiceOne =  \relative e {
 				  
 PartPThreeVoiceOne =  \relative c {
   \clef "alto"
-  \time 4/4
+  \time 2/2
   \key c \major | % 1
   r2. \stemUp c8 -. -> _\mp r8 | % 2
   R1 | % 3
@@ -1333,7 +1333,7 @@ PartPThreeVoiceOne =  \relative c {
 
 PartPFourVoiceOne =  \relative c, {
   \clef "bass"
-  \time 4/4
+  \time 2/2
   \key c \major | % 1
   R1*4 | % 5
   \stemUp c2 ~ \downbow _\f \stemUp c8 ~ \stemUp <c c'>4. ~ -> ~ | % 6
@@ -1358,8 +1358,8 @@ PartPFourVoiceOne =  \relative c, {
 				  
 PartPFiveVoiceOne =  \relative es' {
   \clef "treble"
-  \time 4/4
-  \key es \major | % 1
+  \time 2/2
+   \key es \major | % 1
   R1*7  | % 8
   s1_\markup{\translate #'(-1 . 0) \arrow #"open" ##f #Y #UP #3 #0.14 ""}-\markup{\lower #6 \hspace #-3 \italic{Entrée des bourdons du pìob-mhòr}} | % 9
   \grace {  \small \stemUp es32 } d1 | % 10
@@ -1391,6 +1391,8 @@ PartPFiveVoiceOne =  \relative es' {
   \pageBreak
   
   \tempo 4=38
+  \numericTimeSignature
+\time 4/4
   \grace {  \small \stemUp as'32 } \stemDown d,8. [ ^ "Dithis singling" \grace { \stemUp f32 } \stemDown bes,16 ] \grace {  \small \stemUp as'32 } \stemDown f8. [ \grace {  \small \stemUp f32 } \stemDown bes,16 ] \grace { \stemUp as'32 } \stemDown es8. [ \grace {  \small \stemUp f32 } \stemDown bes,16 ] \grace {  \small \stemUp as'32 } \stemDown c,8. [ \grace { \stemUp f32 } \stemDown bes,16 ] | % 31
   \grace {  \small \stemUp as'32 } \stemDown es8 [ \grace {  \small \stemUp as32 } \stemDown g8 \grace {  \small \stemUp bes32 } \stemDown as8 \stemDown bes8 ]
   \grace {  \small \stemUp bes,32 [ \stemUp es32 ] } \stemDown bes8. [ \grace { \stemUp f'32 } \stemDown bes,16 ] \grace {  \small \stemUp as'32 } \stemDown as,8. [ \grace {  \small \stemUp f'32 } \stemDown bes,16 ]  | % 32
