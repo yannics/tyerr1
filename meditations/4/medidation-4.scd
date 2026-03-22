@@ -1,5 +1,5 @@
 (
-// Quadraphonic Meditation 4 -- Random Walk [ part of Meditations ]
+// Quadraphonic Meditation 4 -- Random Swim [ part of Meditations ]
 // Yann Ics -- Copyleft March 2026
 Server.killAll;
 s = Server.default;
@@ -24,12 +24,12 @@ s.waitForBoot({
     son = BPF.ar(son, 430, 1) + son;
     son = BPF.ar(son, 490, 1) + son;
     son = LPF.ar(son, 6000);
-    Out.ar(out, son * 0.1);
+		Out.ar(out, son * 0.05);
 }).add;
 	/* plugin synth */
 	SynthDef(\vst_plugin2, {
-		|busIn, busOut|
-		Out.ar(busOut, VSTPlugin.ar(In.ar(busIn, 2), 2))
+		|busIn, busOut, rdepth=0.5|
+		Out.ar(busOut, InH2O.ar(VSTPlugin.ar(In.ar(busIn, 2), 2), rdepth))
 	}).add;
 	/*---------------------*/
 
@@ -38,12 +38,12 @@ s.waitForBoot({
 	/*---------------------*/
 	/* source plugin: https://valhalladsp.com/shop/reverb/valhalla-supermassive/ */
 	~mainOutA = VSTPluginController(Synth(\vst_plugin2, [\busIn, 4, \busOut, 0], addAction: 'addToTail'));
-	~mainOutA.open("ValhallaSupermassive", editor:true, verbose:true, action: { |x, ok| ok.if { x.loadPreset("hac") }});
+	~mainOutA.open("ValhallaSupermassive", editor:true, verbose:true, action: { |x, ok| ok.if { x.loadPreset("h2o") }});
 	~mainOutB = VSTPluginController(Synth(\vst_plugin2, [\busIn, 6, \busOut, 2], addAction: 'addToTail'));
-	~mainOutB.open("ValhallaSupermassive", editor:true, verbose:true, action: { |x, ok| ok.if { x.loadPreset("hac") }});
+	~mainOutB.open("ValhallaSupermassive", editor:true, verbose:true, action: { |x, ok| ok.if { x.loadPreset("h2o") }});
 	//~mainOutB.synth.set(\busOut, 0); // as stereo output
-	//~mainOutA.editor;
-	//~mainOutA.savePreset("hac");
+	//~mainOutB.editor;
+	//~mainOutA.savePreset("h2o");
 	//~mainOutA.info.presetFolder;
 	/*---------------------*/
 
@@ -51,7 +51,7 @@ s.waitForBoot({
 
 	/*---------------------*/
 	/* VARIABLES */
-	~serFreqs = [ 190.41803, 1174.659, 207.65235, 87.30706, 184.99721, 116.540935, 160.12185, 854.9481, 391.99542, 293.66476, 233.08187, 415.3047, 329.62755, 640.4874, 622.25397, 427.47405, 92.498605, 146.83238, 123.470825, 320.2437, 195.99771, 155.56349, 73.41619, 174.61412, 89.86536, 269.29178, 369.99442, 587.3295, 311.126985, 659.2551, 246.94165, 134.64589, 95.209015, 77.781745, 493.8833, 103.826175, 179.73072 ];
+	~serFreqs = [ 95.209015, 587.3295, 103.826175, 43.65353, 92.498605, 58.2704675, 80.060925, 427.47405, 195.99771, 146.83238, 116.540935, 207.65235, 164.813775, 320.2437, 311.126985, 213.737025, 46.2493025, 73.41619, 61.7354125, 160.12185, 97.998855, 77.781745, 36.708095, 87.30706, 44.93268, 134.64589, 184.99721, 293.66475, 155.5634925, 329.62755, 123.470825, 67.322945, 47.6045075, 38.8908725, 246.94165, 51.9130875, 89.86536 ];
 // Durations
 ~tempdur = ~serFreqs.differentiate[1..].abs;
 ~durations = ~tempdur.explin(~tempdur.minItem, ~tempdur.maxItem, 2, 8);
@@ -61,53 +61,30 @@ s.waitForBoot({
 	s.sync;
 
 	/*---------------------*/
-	/* init patterns and play*/
-	~violin = Pbind(
-		\out, 4,
-		\instrument, \dwgbowed,
-		\dur, Prand(~durations, inf)*Prand((0.1,0.2..1), inf),
-		\sustain, Pkey(\dur, inf),
-		\freq, Prand((~serFreqs.sort/2)[13..] ++ [\rest].dupEach(12), inf),
-		\force, Prand([0,0.1,0.2,0.3,0.4,0.5], inf),
-		\amp, 0.1
-	).play;
-	~alto1 = Pbind(
-		\out, 5,
-		\instrument, \dwgbowed,
-		\dur, Prand(~durations, inf)*Prand((0.1,0.2..1), inf),
-		\sustain, Pkey(\dur, inf),
-		\freq, Prand((~serFreqs.sort/2)[9..] ++ [\rest].dupEach(8), inf),
-		\force, Prand([0,0.1,0.2,0.3,0.4,0.5], inf),
-		\amp, 0.1
-	).play;
-	~alto2 = Pbind(
-		\out, 6,
-		\instrument, \dwgbowed,
-		\dur, Prand(~durations, inf)*Prand((0.1,0.2..1), inf),
-		\sustain, Pkey(\dur, inf),
-		\freq, Prand((~serFreqs.sort/2)[9..] ++ [\rest].dupEach(8), inf),
-		\force, Prand([0,0.1,0.2,0.3,0.4,0.5], inf),
-		\amp, 0.1
-	).play;
-	~cello = Pbind(
-		\out, 7,
-		\instrument, \dwgbowed,
-		\dur, Prand(~durations, inf)*Prand((0.1,0.2..1), inf),
-		\sustain, Pkey(\dur, inf),
-		\freq, Prand((~serFreqs.sort/2), inf),
-		\force, Prand([0,0.1,0.2,0.3,0.4,0.5], inf),
-		\amp, 0.1
-	).play;
+	/* set ambitus quatuor */
+	~ambitus = [
+		(~serFreqs.sort)[13..] ++ [\rest].dupEach(12), // violin
+		(~serFreqs.sort)[9..] ++ [\rest].dupEach(8),   // alto 1
+		(~serFreqs.sort)[9..] ++ [\rest].dupEach(8),   // alto 2
+		(~serFreqs.sort)                               // cello
+	];
+	/* init patterns and play */
+	~quatuor= ~ambitus.collect{
+		|item, i|
+		Pbind(
+			\instrument, \dwgbowed,
+			\out, i+4,
+			\rdist, Pwhite(0.1, 0.4),
+			\dur, Prand(~durations, inf) * Prand((0.1, 0.2..1), inf),
+			\sustain, Pkey(\dur),
+			\freq, Prand(item, inf),
+			\force, Prand((0.1, 0.2..0.5), inf)!2,
+			\amp, Prand((0.1, 0.2..0.5), inf)!2
+		).trace(\freq, prefix: i+" -> ").play
+	};
 })
 )
 
-~violin.pause;
-~violin.resume;
-~alto1.pause;
-~alto1.resume;
-~alto2.pause;
-~alto2.resume;
-~cello.pause;
-~cello.resume;
-
-~mainOutA.synth.free; ~mainOutB.synth.free; s.quit;
+//~quatuor[0].pause; // resume
+//~quatuor.size.do{|i| ~quatuor[i].stop};
+//~mainOutA.synth.free; ~mainOutB.synth.free; s.quit;
