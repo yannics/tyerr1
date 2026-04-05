@@ -1215,7 +1215,7 @@
   composer =  "Yann Ics"
   subtitle =  " "
   subsubtitle =  " "
-  tagline = \markup { \teeny \typewriter "Copyleft October 2026" }
+  tagline = \markup { \teeny \typewriter "Copyleft March 2026" }
 }
 
 
@@ -1500,4 +1500,5 @@ PartPFiveVoiceOne =  \relative es' {
   }
 	 }
 }
+
 
