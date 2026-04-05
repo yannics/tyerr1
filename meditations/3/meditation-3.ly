@@ -1218,9 +1218,11 @@
   tagline = \markup { \teeny \typewriter "Copyleft October 2026" }
 }
 
+
 \markup {
   \column {
     \vspace #0.5
+    \line  \smallCaps { Lament of Nature }
     \wordwrap \italic \small { 
       La partie quatuor à cordes s'inscrit dans la continuité de la méditation 1. Elle peut être jouée seule à l'instar d'une coda. Aussi et ainsi, la partie de la grande cornemuse (appelée pìob-mhòr en gaélique et notée en A) peut être jouée solo ou accompagnée. Le tempo est purement indicatif et doit être adapté au jeu du sonneur.
     }

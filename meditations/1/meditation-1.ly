@@ -142,11 +142,11 @@ altoone =  \relative f' {
   d2\>  d2  | 
   r2\!  dis,,2\p | % 31
   e2  f2 | % 32
-  e1 | % 33
+  e2 r2 | % 33
   \once \override Rest.stencil =
   #(lambda (grob)
     (grob-interpret-markup grob #{
-     \markup \raise #-1.7 \bold "G.P."
+     \markup \raise #-1.7 \bold "G.P.*"
      #}))    
   r1 \bar "|."
 }
@@ -192,11 +192,11 @@ altotwo =  \relative f {
   dis2\>  b2  |  
   r2\!  c2\p | % 31
   b2  as2 | % 32
-  c,1 | % 33
+  c,2 r2 | % 33
   \once \override Rest.stencil =
   #(lambda (grob)
     (grob-interpret-markup grob #{
-     \markup \raise #-1.7 \bold "G.P."
+     \markup \raise #-1.7 \bold "G.P.*"
      #}))    
   r1 \bar "|."
 }
@@ -237,7 +237,11 @@ cello =  \relative f, {
   f2\>  e2 ~  | 
   \once \override Hairpin.circled-tip = ##t
   e1\p\> | % 31
-  R1\! R1 s1 \bar "|."
+  R1\! R1
+  _\markup \translate #'(0 . -8) \teeny {\normalsize \bold * \italic "Il est possible d'enchainer vers la Méditation 3"}
+  _\markup \translate #'(0 . -10) \teeny {\smallCaps "Lament for Nature" \italic "à partir du troisième temps"}
+  _\markup \translate #'(0 . -12) \teeny {\italic "de la mesure précédente, soit la mesure 31."}
+  s1 \bar "|."
 }
 
 PartPFourVoiceOneLyricsOne =  \lyricmode {
