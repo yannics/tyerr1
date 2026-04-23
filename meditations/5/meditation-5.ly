@@ -38,10 +38,11 @@ PartPOneVoiceOne =  \relative bes {
   bes4. r8  as2 ~  | % 16
   as2.. r8  | % 17
   as1 ~  | % 18
-  as4. r8  bes2 ~ | % 19
-  bes2.. r8 | 
-  g1 ~ | % 21
-  g4. r8  as2 ~  | % 22
+  as2 r8  bes4. ~ | % 19
+  bes1 ~
+  bes4 r8 g8 ~ g2 ~ | 
+  g1 | % 21
+  r8  as2.. ~  | % 22
   as2.. r8 | % 23
   as''1 ~ _\p | % 24
   as4. r8  dis,2 ~ _\pp   | % 25
@@ -59,9 +60,9 @@ PartPOneVoiceOne =  \relative bes {
   \override Score.MetronomeMark.padding = #4
   r4  as2 ^ "pizz." _\mf  | % 35
   c4 r4 \stemDown  f4 ( ~ _\mp ^ "arco" | % 36
-  f4 ~  <d, f'>2 ~ ~ | % 37
-  <d f'>4 ~  <d d'>2 ~ | % 38
-  <d es'>2. ~ ~ | % 39
+  f4 ~  <d, f'>2 ~  | % 37
+  \tieDown <d f'>8 ~  <d d'>2 ~ \tieNeutral <d es'>8~ | % 38
+  <d es'>2. ~  | % 39
   <d es'>4 ) \stemUp as'2 ~ _\p  | 
   \break
   as2  g4 ~  | % 41
@@ -91,10 +92,11 @@ PartPTwoVoiceOne =  \relative d'' {
   r2  es2 ~ _\mp | % 16
   es2.. r8  | % 17
   es1 ~ | % 18
-  es4. r8  es2 ~ | % 19
-  es2.. r8 | 
-  bes'1 ~ | % 21
-  bes4. r8  bes2 ~ | % 22
+  es2 r8  es4. ~ | % 19
+  es1 ~
+  es4 r8 bes'8 ~ bes2 ~| 
+  bes1 | % 21
+  r8  bes2.. ~ | % 22
   bes2.. r8 | % 23
   f'1 ~ _\p | % 24
   f4. r8  g2 ~ _\pp | % 25
@@ -140,10 +142,11 @@ PartPThreeVoiceOne =  \relative bes {
   bes4. r8  as2 ~ | % 16
   as2.. r8  | % 17
   as1 ~ | % 18
-  as4. r8  f'2 ~ | % 19
-  f2.. r8 |
-  cis,1 ~ | % 21
-  cis4. r8  b'! 2 ~ | % 22
+  as2 r8  f'4. ~ | % 19
+  f1 ~
+  f4 r8 cis,8~ cis2~ |
+  cis1  | % 21
+  r8  b'! 2.. ~ | % 22
   b2.. r8 | % 23
   d1 ~ _\p | % 24
   d4. r8  b! 2 ~ _\pp | % 25
@@ -158,8 +161,7 @@ PartPThreeVoiceOne =  \relative bes {
   cis1 | % 34
   \time 3/4  r2  f,4 ~ _\mp  | % 35
   f2 \override Slur.positions = #'(1 . 1) bes4 ( ~ | % 36
-  bes8 ~ [  <c, bes'>8 ~ ]  c4 ~  <c d'>4
-  ~ | % 37
+  bes8 ~ [  <c, bes'>8 ~ ]  c4 ~  <c d'>4 ~ | % 37
   <c c'>2. ~ ~ | % 38
   <c c'>2. ~ ~ | % 39
   <c c'>4 ) 
@@ -191,10 +193,11 @@ PartPFourVoiceOne =  \relative bes, {
   bes4. r8  c,2 ~ | % 16
   c2.. r8  | % 17
   es1 ~ | % 18
-  es4. r8  d2 ~ | % 19
-  d2.. r8 |
-  e! 1 ~ | % 21
-  e4. r8  as2 ~ | % 22
+  es2 r8  d4. ~ | % 19
+  d1 ~
+  d4 r8 e!8 e2~|
+  e1 | % 21
+  r8  as2.. ~ | % 22
   as2.. r8 | % 23
   d1 ~ _\p | % 24
   d4. r8  g2 ~ _\pp | % 25
