@@ -41,29 +41,36 @@ PartPOneVoiceOne =  \relative bes {
   as2 r8  bes4. ~ | % 19
   bes1 ~
   bes4 r8 g8 ~ g2 ~ | 
-  g1 | % 21
-  r8  as2.. ~  | % 22
-  as2.. r8 | % 23
-  as''1 ~ _\p | % 24
-  as4. r8  dis,2 ~ _\pp   | % 25
-  dis2.. r8  | % 26
-  c1 ~  | % 27
-  c1 ~ | % 28
-  c4. r8  c2 ~ | % 29
-  c1 ~ | 
-  c4. r8  c2 ~ | % 31
-  c1 ~ | % 32
-  c4. r8  c2 ~ | % 33
-  c1 | % 34
+  g2.. r8 | % 21
+  as1 ~  | % 22
+  as1 ^ \markup
+  { \translate #'(4 . 1)
+    \concat {
+      \smaller \general-align #Y #DOWN \note { 4 } #UP
+      " = "
+      \smaller \general-align #Y #DOWN \note { 4 } #UP
+    }
+  }
+  \time 2/4 
+  r8 as''4. ~ _\p | % 24
+  as2~ as2
+  r8  dis,4. ~ _\pp   | % 25
+  dis2~ dis2  | % 26
+  r8 c4. ~  | % 27
+  c2~ c2~ c2~ c2| % 28
+  r8  c4. ~ | % 29
+  c2~ c2~ c2 | 
+  r8  c4. ~ | % 31
+  c2~ c2~ c2 | % 32
   \break
   \time 3/4  \tempo 4=80 
   \override Score.MetronomeMark.padding = #4
   r4  as2 ^ "pizz." _\mf  | % 35
-  c4 r4 \stemDown  f4 ( ~ _\mp ^ "arco" | % 36
+  c8 r4. \stemDown  f4  ~ _\mp ^ "arco" \upbow | % 36
   f4 ~  <d, f'>2 ~  | % 37
-  \tieDown <d f'>8 ~  <d d'>2 ~ \tieNeutral <d es'>8~ | % 38
-  <d es'>2. ~  | % 39
-  <d es'>4 ) \stemUp as'2 ~ _\p  | 
+  \tieDown <d f'>8  <d d'>2 ~ \downbow \tieNeutral <d es'>8~ | % 38
+  <d es'>2. ~ \> | % 39
+  <d es'>4  \stemUp as'2 ~ _\p  | 
   \break
   as2  g4 ~  | % 41
   g2. | % 42
@@ -95,25 +102,25 @@ PartPTwoVoiceOne =  \relative d'' {
   es2 r8  es4. ~ | % 19
   es1 ~
   es4 r8 bes'8 ~ bes2 ~| 
-  bes1 | % 21
-  r8  bes2.. ~ | % 22
-  bes2.. r8 | % 23
-  f'1 ~ _\p | % 24
-  f4. r8  g2 ~ _\pp | % 25
-  g2.. r8 | % 26
-  fis1 ~ | % 27
-  fis1 ~ | % 28
-  fis4. r8  fis2 ~ | % 29
-  fis1 ~ | 
-  fis4. r8  fis2 ~ | % 31
-  fis1 ~ | % 32
-  fis4. r8  fis2 ~ | % 33
-  fis1 | % 34
-  \time 3/4  r4  c4 ^ "pizz." _\mf r4  | % 35
-  cis4  f2 ~ _\mp ^ "arco" | % 36
+  bes2.. r8 | % 21
+  bes1 ~ | % 22
+  bes1 | % 23
+  \time 2/4
+  r8 f'4. ~ _\p | % 24
+  f2~ f2
+  r8 g4. ~ _\pp | % 25
+  g2~ g2
+  r8 fis4. ~ | % 27
+  fis2 ~ fis2~ fis2~ fis2 | % 28
+  r8 fis4.~
+  fis2 ~ fis2~ fis2 
+  r8 fis4.~
+  fis2 ~ fis2~ fis2 
+  \time 3/4  r4  c2 ^ "pizz." _\mf  | % 35
+  cis8 r8  f2 ~ _\mp ^ "arco" | % 36
   f4. r8  g,4 ^ "pizz." _\mf | % 37
-  g'2  bes,4 | % 38
-  c4  d2 | % 39
+  g'2  g,4 | % 38
+  c8  bes8 r2 | % 39
   r4  d2 ~ ^ "arco" _\p | 
   d2  b!4 ~ | % 41
   b2. | % 42
@@ -145,26 +152,26 @@ PartPThreeVoiceOne =  \relative bes {
   as2 r8  f'4. ~ | % 19
   f1 ~
   f4 r8 cis,8~ cis2~ |
-  cis1  | % 21
-  r8  b'! 2.. ~ | % 22
-  b2.. r8 | % 23
-  d1 ~ _\p | % 24
-  d4. r8  b! 2 ~ _\pp | % 25
-  b2.. r8  | % 26
-  cis1 ~ | % 27
-  cis1 ~ | % 28
-  cis4. r8  cis2 ~ | % 29
-  cis1 ~ | 
-  cis4. r8  cis2 ~ | % 31
-  cis1 ~ | % 32
-  cis4. r8  cis2 ~ | % 33
-  cis1 | % 34
+  cis2.. r8  | % 21
+  b'! 1 ~ | % 22
+  b1 | % 23
+  \time 2/4
+  r8 d4. ~ _\p | % 24
+  d2~ d2
+  r8  b!4. ~ _\pp | % 25
+  b2~ b2
+  r8  cis4. ~ 
+  cis2~ cis2~ cis2~ cis2
+  r8  cis4. ~ 
+  cis2~ cis2~ cis2
+  r8  cis4. ~ 
+  cis2~ cis2~ cis2
   \time 3/4  r2  f,4 ~ _\mp  | % 35
-  f2 \override Slur.positions = #'(1 . 1) bes4 ( ~ | % 36
-  bes8 ~ [  <c, bes'>8 ~ ]  c4 ~  <c d'>4 ~ | % 37
-  <c c'>2. ~ ~ | % 38
-  <c c'>2. ~ ~ | % 39
-  <c c'>4 ) 
+  f2 \override Slur.positions = #'(1 . 1) bes4 ~ \upbow | % 36
+  bes8 ~ [  <c, bes'>8 ~ ]  c4 ~  <c d'>4  | % 37
+  <c c'>2. ~ \downbow | % 38
+  <c c'>2. ~ \> | % 39
+  <c c'>4  
   f'2 ~ _\p | 
   f2  as4 ~ | % 41
   as2. | % 42
@@ -196,25 +203,25 @@ PartPFourVoiceOne =  \relative bes, {
   es2 r8  d4. ~ | % 19
   d1 ~
   d4 r8 e!8 e2~|
-  e1 | % 21
-  r8  as2.. ~ | % 22
-  as2.. r8 | % 23
-  d1 ~ _\p | % 24
-  d4. r8  g2 ~ _\pp | % 25
-  g2.. r8  | % 26
-  f1 ~ | % 27
-  f1 ~ | % 28
-  f4. r8  f2 ~ | % 29
-  f1 ~ | 
-  f4. r8  f2 ~ | % 31
-  f1 ~ | % 32
-  f4. r8  f2 ~ | % 33
-  f1 | % 34
+  e2.. r8 | % 21
+  as1 ~ | % 22
+  as1 | % 23
+  \time 2/4
+  r8 d4. ~ _\p | % 24
+  d2~ d2
+  r8  g4. ~ _\pp | % 25
+  g2~ g2
+  r8 f4. ~ 
+  f2~ f2~ f2~ f2 
+  r8 f4. ~ 
+  f2~ f2~ f2
+  r8 f4. ~ 
+  f2~ f2~ f2 
   \time 3/4   f,2. ~ _\mp  | % 35
   f4  c2 ~ | % 36
-  c2. ~ | % 37
-  c2. | % 38
-  r8  bes'4. ^ "pizz." _\mf r4 | % 39
+  c2. | % 37
+  c2^ "pizz." _\mf ees4 | % 38
+  r4  aes'2 | % 39
   r4  c2 ~ ^ "arco" _\p | 
   c2  c4 ~ | % 41
   c2. | % 42
