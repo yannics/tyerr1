@@ -18,7 +18,7 @@
 }
 
 PartPOneVoiceOne =  \relative bes {
-  \clef "treble" \time 2/2  | % 1
+  \clef "treble" \numericTimeSignature \time 2/2  | % 1
   
   \tempo 2=58
   \override Score.MetronomeMark.padding = #2
@@ -43,41 +43,35 @@ PartPOneVoiceOne =  \relative bes {
   bes4 r8 g8 ~ g2 ~ | 
   g2.. r8 | % 21
   as1 ~  | % 22
-  as1 ^ \markup
-  { \translate #'(4 . 1)
-    \concat {
-      \smaller \general-align #Y #DOWN \note { 4 } #UP
-      " = "
-      \smaller \general-align #Y #DOWN \note { 4 } #UP
-    }
-  }
-  \time 2/4 
-  r8 as''4. ~ _\p | % 24
+  as1 
+  \time 3/2 
+  r8 as''4. ~ _\p 
   as2~ as2
-  r8  dis,4. ~ _\pp   | % 25
-  dis2~ dis2  | % 26
-  r8 c4. ~  | % 27
-  c2~ c2~ c2~ c2| % 28
-  r8  c4. ~ | % 29
-  c2~ c2~ c2 | 
-  r8  c4. ~ | % 31
-  c2~ c2~ c2 | % 32
+  r8  ees4. ~ _\pp  
+  ees2~ ees2  | % 26
+  \time 5/2
+  r8 c4. ~ 
+  c2~ c2~ c2~ c2
+  \time 4/2
+  r8  c4. ~
+  c2~ c2~ c2 
+  r8  c4. ~ 
+  c2~ c2~ c2 
   \break
   \time 3/4  \tempo 4=80 
   \override Score.MetronomeMark.padding = #4
-  r4  as2 ^ "pizz." _\mf  | % 35
-  c8 r4. \stemDown  f4  ~ _\mp ^ "arco" \upbow | % 36
-  f4 ~  <d, f'>2 ~  | % 37
-  \tieDown <d f'>8  <d d'>2 ~ \downbow \tieNeutral <d es'>8~ | % 38
-  <d es'>2. ~ \> | % 39
-  <d es'>4  \stemUp as'2 ~ _\p  | 
+  r4  as2 ^ "pizz." _\mf  
+  c8 r4. \stemDown  f4  ~ _\mp ^ "arco" \upbow 
+  f4 ~  <d, f'>2 ~ 
+  \tieDown <d f'>8  <d d'>2 ~ \downbow \tieNeutral <d es'>8~
+  \numericTimeSignature \time 4/4 
+  <d es'>1 \>
   \break
-  as2  g4 ~  | % 41
-  g2. | % 42
-  es2. ~  | % 43
-  es4 r2 | % 44
-  R2.  | % 45
-  R2. \bar "|."
+  \stemUp as'1 _\p   
+  g1  
+  es1   
+  R1
+  R1 \bar "|."
 }
 
 PartPTwoVoiceOne =  \relative d'' {
@@ -105,29 +99,26 @@ PartPTwoVoiceOne =  \relative d'' {
   bes2.. r8 | % 21
   bes1 ~ | % 22
   bes1 | % 23
-  \time 2/4
-  r8 f'4. ~ _\p | % 24
+  r8 f'4. ~ _\p
   f2~ f2
-  r8 g4. ~ _\pp | % 25
+  r8 g4. ~ _\pp 
   g2~ g2
-  r8 fis4. ~ | % 27
-  fis2 ~ fis2~ fis2~ fis2 | % 28
+  r8 fis4. ~ 
+  fis2 ~ fis2~ fis2~ fis2 
   r8 fis4.~
   fis2 ~ fis2~ fis2 
   r8 fis4.~
   fis2 ~ fis2~ fis2 
-  \time 3/4  r4  c2 ^ "pizz." _\mf  | % 35
+  r4  c2 ^ "pizz." _\mf  | % 35
   cis8 r8  f2 ~ _\mp ^ "arco" | % 36
   f4. r8  g,4 ^ "pizz." _\mf | % 37
   g'2  g,4 | % 38
-  c8  bes8 r2 | % 39
-  r4  d2 ~ ^ "arco" _\p | 
-  d2  b!4 ~ | % 41
-  b2. | % 42
-  c2. ~ | % 43
-  c4 r2 | % 44
-  R2. | % 45
-  R2. \bar "|."
+  c8  bes8 r2.
+  d1 ^ "arco" _\p 
+  b!1 
+  c1
+  R1 
+  R1 \bar "|."
 }
 
 PartPThreeVoiceOne =  \relative bes {
@@ -155,10 +146,9 @@ PartPThreeVoiceOne =  \relative bes {
   cis2.. r8  | % 21
   b'! 1 ~ | % 22
   b1 | % 23
-  \time 2/4
-  r8 d4. ~ _\p | % 24
+  r8 d4. ~ _\p 
   d2~ d2
-  r8  b!4. ~ _\pp | % 25
+  r8  b!4. ~ _\pp
   b2~ b2
   r8  cis4. ~ 
   cis2~ cis2~ cis2~ cis2
@@ -166,19 +156,16 @@ PartPThreeVoiceOne =  \relative bes {
   cis2~ cis2~ cis2
   r8  cis4. ~ 
   cis2~ cis2~ cis2
-  \time 3/4  r2  f,4 ~ _\mp  | % 35
+  r2  f,4 ~ _\mp  | % 35
   f2 \override Slur.positions = #'(1 . 1) bes4 ~ \upbow | % 36
   bes8 ~ [  <c, bes'>8 ~ ]  c4 ~  <c d'>4  | % 37
   <c c'>2. ~ \downbow | % 38
-  <c c'>2. ~ \> | % 39
-  <c c'>4  
-  f'2 ~ _\p | 
-  f2  as4 ~ | % 41
-  as2. | % 42
-  g2. ~ | % 43
-  g4 r2 | % 44
-  R2. | % 45
-  R2. \bar "|."
+  <c c'>1 \>
+  f'1 _\p 
+  as1
+  g1
+  R1
+  R1 \bar "|."
 }
 
 PartPFourVoiceOne =  \relative bes, {
@@ -206,10 +193,9 @@ PartPFourVoiceOne =  \relative bes, {
   e2.. r8 | % 21
   as1 ~ | % 22
   as1 | % 23
-  \time 2/4
-  r8 d4. ~ _\p | % 24
+  r8 d4. ~ _\p 
   d2~ d2
-  r8  g4. ~ _\pp | % 25
+  r8  g4. ~ _\pp 
   g2~ g2
   r8 f4. ~ 
   f2~ f2~ f2~ f2 
@@ -217,18 +203,17 @@ PartPFourVoiceOne =  \relative bes, {
   f2~ f2~ f2
   r8 f4. ~ 
   f2~ f2~ f2 
-  \time 3/4   f,2. ~ _\mp  | % 35
+  \time 3/4
+  f,2. ~ _\mp  | % 35
   f4  c2 ~ | % 36
   c2. | % 37
   c2^ "pizz." _\mf ees4 | % 38
-  r4  aes'2 | % 39
-  r4  c2 ~ ^ "arco" _\p | 
-  c2  c4 ~ | % 41
-  c2. | % 42
-  es2. ~ | % 43
-  es4  c,2 ~ _\mp | % 44
-  c2. ~  | % 45
-  c2. \bar "|."
+  r4  aes'2 r4
+  c1 ^ "arco" _\p 
+  c1
+  es1
+  c,1 ~ _\mp
+  c1 \bar "|."
 }
 
 \score {

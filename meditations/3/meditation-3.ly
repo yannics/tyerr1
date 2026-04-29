@@ -1222,7 +1222,7 @@
 \markup {
   \column {
     \vspace #0.5
-    \line  \smallCaps { Lament of Being }
+    \line  \smallCaps { Lament of the Soul }
     \wordwrap \italic \small { 
       La partie quatuor à cordes peut être jouée seule à l'instar d'une coda dans la continuité de la méditation 1. Aussi et ainsi, la partie de la grande cornemuse (appelée pìob-mhòr en gaélique et notée en A) peut être jouée solo. Le tempo est purement indicatif et doit être adapté au jeu du sonneur.
     }
